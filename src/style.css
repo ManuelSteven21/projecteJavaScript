@@ -1,0 +1,21 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0; /* Eliminar márgenes */
+  padding: 0; /* Eliminar relleno */
+  height: 100%; /* Asegurarse de que ocupe todo el alto */
+  overflow: auto; /* Permitir scroll */
+}
+
+body {
+  background-image: url('@/assets/batman-test.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
