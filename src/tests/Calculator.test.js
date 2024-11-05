@@ -13,105 +13,105 @@ describe('Calculator.vue', () => {
     wrapper.unmount();
   });
 
-  it('should clear the display', () => {
+  it('hauria de netejar la pantalla', () => {
     wrapper.vm.display = '123';
     wrapper.vm.clearDisplay();
     expect(wrapper.vm.display).toBe('');
   });
 
-  it('should clear the last entry', () => {
+  it('hauria de netejar l\'última entrada', () => {
     wrapper.vm.display = '123';
     wrapper.vm.clearEntry();
     expect(wrapper.vm.display).toBe('12');
   });
 
-  it('should append a number to display', () => {
+  it('hauria d\'afegir un número a la pantalla', () => {
     wrapper.vm.appendNumber(5);
     expect(wrapper.vm.display).toBe('5');
     wrapper.vm.appendNumber(3);
     expect(wrapper.vm.display).toBe('53');
   });
 
-  it('should append a decimal point', () => {
+  it('hauria d\'afegir un punt decimal', () => {
     wrapper.vm.display = '5';
     wrapper.vm.appendDecimal();
     expect(wrapper.vm.display).toBe('5.');
-    // No debe añadir otro punto decimal
+    // No hauria d'afegir un altre punt decimal
     wrapper.vm.appendDecimal();
     expect(wrapper.vm.display).toBe('5.');
   });
 
-  it('should append an operator', () => {
+  it('hauria d\'afegir un operador', () => {
     wrapper.vm.display = '8';
     wrapper.vm.operate('+');
     expect(wrapper.vm.display).toBe('8+');
-    // No debería permitir otro operador consecutivo
+    // No hauria de permetre un altre operador consecutiu
     wrapper.vm.operate('-');
     expect(wrapper.vm.display).toBe('8+');
   });
 
-  it('should calculate square of a number', () => {
+  it('hauria de calcular el quadrat d\'un número', () => {
     wrapper.vm.display = '4';
     wrapper.vm.square();
     expect(wrapper.vm.display).toBe('16');
   });
 
-  it('should calculate square root of a number', () => {
+  it('hauria de calcular l\'arrel quadrada d\'un número', () => {
     wrapper.vm.display = '9';
     wrapper.vm.squareRoot();
     expect(wrapper.vm.display).toBe('3');
   });
 
-  it('should calculate result for addition', () => {
+  it('hauria de calcular el resultat d\'una suma', () => {
     wrapper.vm.display = '8+5';
     wrapper.vm.calculate();
     expect(wrapper.vm.display).toBe('13');
   });
 
-  it('should calculate result for subtraction', () => {
+  it('hauria de calcular el resultat d\'una resta', () => {
     wrapper.vm.display = '10-3';
     wrapper.vm.calculate();
     expect(wrapper.vm.display).toBe('7');
   });
 
-  it('should calculate result for multiplication', () => {
+  it('hauria de calcular el resultat d\'una multiplicació', () => {
     wrapper.vm.display = '4*5';
     wrapper.vm.calculate();
     expect(wrapper.vm.display).toBe('20');
   });
 
-  it('should calculate result for division', () => {
+  it('hauria de calcular el resultat d\'una divisió', () => {
     wrapper.vm.display = '20/4';
     wrapper.vm.calculate();
     expect(wrapper.vm.display).toBe('5');
   });
 
-  it('should handle division by zero', () => {
+  it('hauria de gestionar la divisió entre zero', () => {
     wrapper.vm.display = '5/0';
     wrapper.vm.calculate();
     expect(wrapper.vm.display).toBe('Infinity');
   });
 
-  it('should handle exponentiation', () => {
+  it('hauria de gestionar l\'exponenciació', () => {
     wrapper.vm.display = '2^3';
     wrapper.vm.calculate();
     expect(wrapper.vm.display).toBe('8');
   });
 
-  it('should append parenthesis correctly', () => {
+  it('hauria d\'afegir parèntesis correctament', () => {
     wrapper.vm.appendParenthesis('(');
     wrapper.vm.appendNumber(5);
     wrapper.vm.appendParenthesis(')');
     expect(wrapper.vm.display).toBe('(5)');
   });
 
-  it('should handle complex expressions with parentheses', () => {
+  it('hauria de gestionar expressions complexes amb parèntesis', () => {
     wrapper.vm.display = '(2+3)*4';
     wrapper.vm.calculate();
     expect(wrapper.vm.display).toBe('20');
   });
 
-  it('should display error for invalid expressions', () => {
+  it('hauria de mostrar un error per expressions no vàlides', () => {
     wrapper.vm.display = '5+*3';
     wrapper.vm.calculate();
     expect(wrapper.vm.display).toBe('Error');

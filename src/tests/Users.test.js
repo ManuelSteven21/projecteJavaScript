@@ -30,7 +30,7 @@ describe('UsersPage.vue', () => {
     vi.resetAllMocks();
   });
 
-  it('should fetch and render users after loading', async () => {
+  it('hauria de renderitzar els la peticio dels usuaris', async () => {
     // Verifica que axios.get s'hagi cridat una vegada
     expect(axios.get).toHaveBeenCalledWith('https://dummyjson.com/users');
 

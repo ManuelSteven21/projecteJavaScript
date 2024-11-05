@@ -6,7 +6,7 @@ describe('CommentsPage.vue', () => {
   let wrapper;
 
   beforeEach(async () => {
-    // Establece un mock global para fetch
+    // Estableix un mock global per fetch
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: true,
@@ -28,25 +28,25 @@ describe('CommentsPage.vue', () => {
     );
 
     wrapper = shallowMount(CommentsPage);
-    // Espera a que el componente se haya actualizado
+    // Espera que el component s’hagi actualitzat
     await wrapper.vm.$nextTick();
   });
 
   afterEach(() => {
-    // Limpia el mock después de cada test
+    // Neteja el mock després de cada test
     vi.resetAllMocks();
   });
 
-  // Eliminamos la prueba de estado de carga inicial
+  // Eliminem la prova d'estat de càrrega inicial
 
-  it('should render comments after fetching', async () => {
-    // Espera a que se resuelva la promesa de fetch
+  it('hauria de renderitzar els comentaris després de fer el fetch', async () => {
+    // Espera que es resolgui la promesa de fetch
     await wrapper.vm.$nextTick();
 
-    // Verifica que se haya hecho la llamada a fetch
+    // Verifica que s'hagi fet la crida a fetch
     expect(global.fetch).toHaveBeenCalled();
 
-    // Verifica que se renderizan los comentarios
+    // Verifica que es renderitzen els comentaris
     expect(wrapper.findAll('.comment-card').length).toBe(2);
     expect(wrapper.find('.comment-name').text()).toBe('John Doe');
   });
