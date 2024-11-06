@@ -31,7 +31,7 @@ export default {
 .content {
   flex: 1;
   padding-top: 6rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 </style>
