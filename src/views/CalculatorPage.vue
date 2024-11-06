@@ -55,8 +55,14 @@ export default {
       this.operatorSet = false;
     },
     appendDecimal() {
-      if (!this.display.includes('.')) {
-        this.display += '.';
+      if (this.display) {
+        // Comprovem si ja existeix un punt decimal
+        const lastNumber = this.display.split(/[\+\-\*\/\(\)]/).pop();
+        if (!lastNumber.includes('.')) {
+          this.display += '.';
+        }
+      } else {
+        this.display += '0.';  // Si no hi ha res a la pantalla, afegim "0."
       }
     },
     operate(operator) {
@@ -86,15 +92,23 @@ export default {
     },
     calculate() {
         try {
-            // Reemplaza "^" por "**", "x" por "*", y "÷" por "/"
-            let expression = this.display.replace(/\^/g, '**')
-                                          .replace(/x/g, '*')
-                                          .replace(/÷/g, '/');
-            // Evalúa la expresión
-            this.display = eval(expression).toString();
-        } catch (e) {
-            this.display = 'Error';
+        // Substituir els símbols per operadors JavaScript
+        let expression = this.display.replace(/\^/g, '**')
+                                      .replace(/x/g, '*')
+                                      .replace(/÷/g, '/');
+        // Avalua l'expressió
+        let result = eval(expression);
+        
+        // Convertim el resultat en número i tornem a convertir a cadena
+        // Això elimina qualsevol zero innecessari després del punt decimal
+        if (result % 1 !== 0) {
+          this.display = result.toFixed(10).replace(/\.?0+$/, ''); // Eliminem els zeros finals
+        } else {
+          this.display = result.toString();
         }
+      } catch (e) {
+        this.display = 'Error';
+      }
     },
   },
 };
